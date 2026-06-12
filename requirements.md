@@ -188,6 +188,14 @@ A reference page (or tooltip/overlay) that translates numeric attribute values i
 
 ---
 
+## Language / i18n
+
+- **Current**: English — all UI text is in English
+- **Planned** (if the app gets traction): Multilingual — English, German, French to accommodate the full group
+- Implementation approach TBD (Angular built-in i18n or ngx-translate)
+
+---
+
 ## Constraints
 
 - No authentication — fully public app

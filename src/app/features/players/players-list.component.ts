@@ -33,13 +33,15 @@ export class PlayersListComponent {
   }).pipe(
     map(({ players, sessions }) =>
       players
-        .slice()
-        .sort((a, b) => b.overall - a.overall)
         .map((player) => ({
           player,
           gamesPlayed: this.countGamesPlayed(player.id, sessions),
           lastResults: this.getLastResults(player.id, sessions),
-        })),
+        }))
+        .sort((a, b) => {
+          if (b.gamesPlayed !== a.gamesPlayed) return b.gamesPlayed - a.gamesPlayed;
+          return a.player.name.localeCompare(b.player.name);
+        }),
     ),
   );
 

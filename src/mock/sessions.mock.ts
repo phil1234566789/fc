@@ -9,19 +9,18 @@ function snap(
   return { player_id, pac, sho, pas, dri, def, phy, tec, overall };
 }
 
-// Snapshots per player (current stats at time of each session)
-const P01 = snap('p01', 82, 78, 80, 79, 76, 80, 81, 79);
-const P02 = snap('p02', 90, 82, 65, 85, 45, 72, 70, 73);
-const P03 = snap('p03', 68, 65, 86, 74, 60, 65, 82, 71);
-const P04 = snap('p04', 60, 50, 70, 58, 88, 82, 62, 67);
-const P05 = snap('p05', 72, 68, 72, 65, 70, 88, 65, 71);
-const P06 = snap('p06', 65, 72, 78, 80, 55, 60, 88, 71);
-const P07 = snap('p07', 78, 88, 68, 78, 42, 68, 72, 71);
-const P08 = snap('p08', 64, 48, 65, 55, 84, 78, 58, 65);
-const P09 = snap('p09', 70, 70, 74, 68, 62, 70, 72, 69);
-const P10 = snap('p10', 85, 72, 70, 82, 48, 65, 74, 71);
-const P11 = snap('p11', 62, 65, 74, 60, 78, 75, 70, 69);
-const P12 = snap('p12', 55, 45, 68, 52, 82, 84, 62, 64);
+const P01 = snap('p01', 78, 82, 82, 84, 72, 82, 82, 80); // Bellingham
+const P02 = snap('p02', 88, 78, 74, 88, 36, 62, 85, 73); // Olise
+const P03 = snap('p03', 62, 72, 91, 82, 72, 62, 90, 76); // Modric
+const P04 = snap('p04', 80, 42, 66, 60, 86, 88, 62, 69); // Upamecano
+const P05 = snap('p05', 74, 62, 78, 72, 86, 84, 72, 75); // Tchouameni
+const P06 = snap('p06', 80, 80, 82, 92, 35, 60, 92, 74); // Neymar
+const P07 = snap('p07', 70, 93, 80, 78, 42, 82, 80, 75); // Kane
+const P08 = snap('p08', 72, 68, 76, 70, 74, 80, 72, 73); // Rabiot
+const P09 = snap('p09', 66, 80, 82, 72, 58, 72, 78, 73); // Müller
+const P10 = snap('p10', 62, 88, 90, 92, 38, 58, 95, 75); // Messi
+const P11 = snap('p11', 76, 92, 72, 80, 42, 82, 80, 75); // Ronaldo
+const P12 = snap('p12', 70, 68, 90, 76, 82, 72, 82, 77); // Kimmich
 
 export const MOCK_SESSIONS: SavedSession[] = [
   // ── Session 1 · 2026-05-01 · A 2:1 B ────────────────────────────────────
@@ -54,7 +53,7 @@ export const MOCK_SESSIONS: SavedSession[] = [
     team_b: [P02, P04, P06, P07, P09, P11],
     score_a: 1,
     score_b: 1,
-    accepted_by: 'Stefan H.',
+    accepted_by: 'Stefan B.',
     created_at: '2026-05-29T19:30:00.000Z',
   },
   // ── Session 4 · 2026-06-05 · A 1:3 B ────────────────────────────────────
@@ -76,7 +75,7 @@ export const MOCK_SESSIONS: SavedSession[] = [
     team_b: [P02, P03, P04, P08, P09, P10],
     score_a: 2,
     score_b: 1,
-    accepted_by: 'Stefan H.',
+    accepted_by: 'Stefan B.',
     created_at: '2026-06-12T19:35:00.000Z',
   },
 ];

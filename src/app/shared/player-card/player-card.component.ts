@@ -12,9 +12,9 @@ const FITNESS_COLORS: Record<Fitness, string> = {
 const FITNESS_LABELS: Record<Fitness, string> = {
   1: 'Top Form',
   2: 'In Form',
-  3: 'Formtief',
-  4: 'Aus der Übung',
-  5: 'Im Comeback',
+  3: 'Low Form',
+  4: 'Out of Practice',
+  5: 'Making a Comeback',
 };
 
 @Component({
