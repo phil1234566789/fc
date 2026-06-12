@@ -26,6 +26,19 @@ Implementation order: each phase builds on the previous. A phase is shippable on
 
 ---
 
+## Phase 1.5 — Ratings Guide
+
+> Static reference page. No backend needed, no forms. Quick win before player management.
+
+### F1.5 — Ratings Page
+- Route `/ratings`
+- Explains how OVR is calculated (simple avg of 7 stats, intentionally equal-weight for 5v5)
+- Brief FIFA comparison: sub-attributes, position-weighted OVR — vs. our simplified approach
+- Range descriptions (4 tiers per attribute) for all 7 attributes: PAC, SHO, PAS, DRI, DEF, PHY, TEC
+- Written for hobby players — plain football language, no jargon
+
+---
+
 ## Phase 2 — Player Management
 
 > Core data entry. Required before any other feature is useful.

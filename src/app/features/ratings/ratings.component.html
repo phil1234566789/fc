@@ -1,0 +1,68 @@
+<div class="ratings-page">
+
+  <div class="ratings-page__header">
+    <h1 class="ratings-page__title">Attribute Ratings</h1>
+    <p class="ratings-page__subtitle">
+      What each number actually means on the pitch.
+    </p>
+  </div>
+
+  <!-- OVR + TOT explanation -->
+  <section class="ovr-box">
+    <div class="ovr-box__label">OVR</div>
+    <div class="ovr-box__content">
+      <h2 class="ovr-box__title">Overall Rating</h2>
+      <p class="ovr-box__text">
+        The average of all 7 attributes, rounded to a whole number:
+      </p>
+      <div class="ovr-formula">
+        (PAC + SHO + PAS + DRI + DEF + PHY + TEC) ÷ 7
+      </div>
+      <p class="ovr-box__text">
+        Every attribute weighs equally. In 5v5 there are no fixed positions —
+        everyone attacks and defends, so a high SHO doesn't offset a low DEF.
+        A player who never tracks back is always one overload in defence.
+      </p>
+    </div>
+  </section>
+
+  <section class="ovr-box">
+    <div class="ovr-box__label">TOT</div>
+    <div class="ovr-box__content">
+      <h2 class="ovr-box__title">Total Score</h2>
+      <p class="ovr-box__text">
+        The raw sum of all 7 attributes. Maximum possible: 700 (7 × 100).
+      </p>
+      <div class="ovr-formula">
+        PAC + SHO + PAS + DRI + DEF + PHY + TEC
+      </div>
+      <p class="ovr-box__text">
+        Useful when two players share the same OVR — the total breaks the tie.
+        A player with OVR 75 / TOT 530 is objectively stronger than OVR 75 / TOT 519.
+      </p>
+    </div>
+  </section>
+
+  <!-- Attribute sections -->
+  @for (attr of attributes; track attr.key) {
+    <section class="attr-section">
+      <div class="attr-section__head">
+        <span class="attr-key">{{ attr.key }}</span>
+        <div>
+          <h2 class="attr-name">{{ attr.fullName }}</h2>
+          <p class="attr-blurb">{{ attr.blurb }}</p>
+        </div>
+      </div>
+
+      <div class="attr-ranges">
+        @for (r of attr.ranges; track r.range) {
+          <div class="range-row range-row--{{ r.tier }}">
+            <span class="range-row__range">{{ r.range }}</span>
+            <span class="range-row__desc">{{ r.description }}</span>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+</div>

@@ -29,6 +29,11 @@ export class PlayerCardComponent {
   lastResults = input<('W' | 'D' | 'L')[]>();
   compact = input<boolean>(false);
 
+  protected total = computed(() => {
+    const p = this.player();
+    return p.pac + p.sho + p.pas + p.dri + p.def + p.phy + p.tec;
+  });
+
   protected stats = computed(() => {
     const p = this.player();
     return [
@@ -39,6 +44,7 @@ export class PlayerCardComponent {
       { label: 'DEF', value: p.def },
       { label: 'PHY', value: p.phy },
       { label: 'TEC', value: p.tec },
+      { label: 'OVR', value: p.overall },
     ];
   });
 

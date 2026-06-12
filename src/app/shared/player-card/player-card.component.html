@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card__top">
-    <div class="card__overall">{{ player().overall }}</div>
+    <div class="card__total-wrap">
+      <div class="card__total-value">{{ total() }}</div>
+      <div class="card__total-label">TOTAL</div>
+    </div>
     <div
       class="card__fitness"
       [style.background-color]="fitnessColor()"
@@ -32,7 +35,7 @@
 
   @if (gamesPlayed() !== undefined) {
     <div class="card__footer">
-      <span class="card__games">{{ gamesPlayed() }} Spiele</span>
+      <span class="card__games">{{ gamesPlayed() }} games</span>
       <div class="card__results">
         @for (result of lastResults() ?? []; track $index) {
           <span class="result" [class]="'result--' + result">{{ result }}</span>

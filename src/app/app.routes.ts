@@ -9,4 +9,11 @@ export const routes: Routes = [
         (m) => m.PlayersListComponent,
       ),
   },
+  {
+    path: 'ratings',
+    loadComponent: () =>
+      import('./features/ratings/ratings.component').then(
+        (m) => m.RatingsComponent,
+      ),
+  },
 ];

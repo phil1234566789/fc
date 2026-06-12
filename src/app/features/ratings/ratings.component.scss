@@ -1,0 +1,166 @@
+.ratings-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &__header {
+    margin-bottom: 0.25rem;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+
+  &__subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+}
+
+// ─── OVR Box ─────────────────────────────────────────────────────────────────
+
+.ovr-box {
+  display: flex;
+  gap: 1.25rem;
+  background: var(--gold-faint);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+
+  &__label {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 12px rgba(201, 162, 39, 0.3);
+    flex-shrink: 0;
+    width: 3rem;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+}
+
+.ovr-formula {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--gold);
+  background: rgba(201, 162, 39, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: monospace;
+  letter-spacing: 0.02em;
+}
+
+// ─── Attribute Section ────────────────────────────────────────────────────────
+
+.attr-section {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.attr-key {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gold);
+  flex-shrink: 0;
+  width: 3rem;
+  text-shadow: 0 0 10px rgba(201, 162, 39, 0.25);
+}
+
+.attr-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.attr-blurb {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.attr-ranges {
+  display: flex;
+  flex-direction: column;
+}
+
+.range-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__range {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    width: 5.5rem;
+    flex-shrink: 0;
+    font-family: monospace;
+  }
+
+  &__desc {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+  }
+
+  // Tier colours — subtle left border + range tint
+  &--elite {
+    border-left: 3px solid #c9a227;
+    .range-row__range { color: #c9a227; }
+  }
+
+  &--good {
+    border-left: 3px solid #66bb6a;
+    .range-row__range { color: #66bb6a; }
+  }
+
+  &--average {
+    border-left: 3px solid #ffa726;
+    .range-row__range { color: #ffa726; }
+  }
+
+  &--weak {
+    border-left: 3px solid #ef5350;
+    .range-row__range { color: #ef5350; }
+  }
+}
