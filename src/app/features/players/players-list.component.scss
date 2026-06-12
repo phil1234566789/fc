@@ -1,0 +1,233 @@
+.players-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-muted);
+  }
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  background: var(--gold-faint);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(201, 162, 39, 0.25);
+    border-color: var(--gold-muted);
+  }
+
+  &--small {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+// ─── List ────────────────────────────────────────────────────────────────────
+
+.player-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--gold-faint);
+  }
+
+  &:active {
+    background: rgba(201, 162, 39, 0.12);
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border);
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__fitness {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  &__games {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  &__overall {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  &__results {
+    display: flex;
+    gap: 3px;
+  }
+
+  &__no-results {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+}
+
+.fitness-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--1 { background: #4caf50; }
+  &--2 { background: #8bc34a; }
+  &--3 { background: #ffeb3b; }
+  &--4 { background: #ff9800; }
+  &--5 { background: #f44336; }
+}
+
+.result {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.58rem;
+  font-weight: 800;
+
+  &--W { background: #2e7d32; color: #fff; }
+  &--L { background: #b71c1c; color: #fff; }
+  &--D { background: var(--gold); color: #1a1200; }
+}
+
+// ─── Modal ───────────────────────────────────────────────────────────────────
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.15s ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: 280px;
+  animation: slideUp 0.2s ease;
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  &__close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--gold-faint);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+
+    &:hover {
+      color: var(--text);
+      background: rgba(201, 162, 39, 0.2);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

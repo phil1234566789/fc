@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold: #c9a227;
+  --gold-muted: rgba(201, 162, 39, 0.6);
+  --gold-faint: rgba(201, 162, 39, 0.15);
+  --bg: #0a0a14;
+  --bg-card: #14120a;
+  --bg-nav: #111124;
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.55);
+  --border: rgba(201, 162, 39, 0.35);
+  --nav-height: 56px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

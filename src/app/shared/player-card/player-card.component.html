@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card__top">
+    <div class="card__overall">{{ player().overall }}</div>
+    <div
+      class="card__fitness"
+      [style.background-color]="fitnessColor()"
+      [title]="fitnessLabel()"
+    ></div>
+  </div>
+
+  <div class="card__photo-wrap">
+    <img
+      class="card__photo"
+      [src]="player().image"
+      [alt]="player().name"
+      (error)="onImgError($event)"
+    />
+  </div>
+
+  <div class="card__name">{{ player().name }}</div>
+
+  @if (!compact()) {
+    <div class="card__stats">
+      @for (stat of stats(); track stat.label) {
+        <div class="stat">
+          <span class="stat__value">{{ stat.value }}</span>
+          <span class="stat__label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  }
+
+  @if (gamesPlayed() !== undefined) {
+    <div class="card__footer">
+      <span class="card__games">{{ gamesPlayed() }} Spiele</span>
+      <div class="card__results">
+        @for (result of lastResults() ?? []; track $index) {
+          <span class="result" [class]="'result--' + result">{{ result }}</span>
+        }
+        @if (!(lastResults()?.length)) {
+          <span class="card__no-results">–</span>
+        }
+      </div>
+    </div>
+  }
+</div>

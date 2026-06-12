@@ -1,0 +1,60 @@
+<div class="players-page">
+  <div class="players-page__header">
+    <h1 class="players-page__title">Spieler</h1>
+    <a class="btn-primary" routerLink="/players/new">+ Neuer Spieler</a>
+  </div>
+
+  @if (viewModels$ | async; as vms) {
+    <div class="player-list">
+      @for (vm of vms; track vm.player.id) {
+        <div class="player-row" (click)="openModal(vm)">
+          <img
+            class="player-row__avatar"
+            [src]="vm.player.image"
+            [alt]="vm.player.name"
+            (error)="onImgError($event, vm.player.name)"
+          />
+          <div class="player-row__info">
+            <span class="player-row__name">{{ vm.player.name }}</span>
+            <div class="player-row__meta">
+              <span class="player-row__games">{{ vm.gamesPlayed }} Spiele</span>
+            </div>
+          </div>
+          <div class="player-row__right">
+            <span class="player-row__overall">{{ vm.player.overall }}</span>
+            <div class="player-row__results">
+              @for (result of vm.lastResults; track $index) {
+                <span class="result result--{{ result }}">{{ result }}</span>
+              }
+              @if (!vm.lastResults.length) {
+                <span class="player-row__no-results">–</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="players-page__loading">Lade Spieler…</div>
+  }
+</div>
+
+@if (selectedVm(); as vm) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal__actions">
+        <a class="btn-primary btn-primary--small" [routerLink]="['/players', vm.player.id, 'edit']">
+          Bearbeiten
+        </a>
+        <button class="modal__close" (click)="closeModal()" aria-label="Schließen">✕</button>
+      </div>
+      <div class="modal__card">
+        <app-player-card
+          [player]="vm.player"
+          [gamesPlayed]="vm.gamesPlayed"
+          [lastResults]="vm.lastResults"
+        />
+      </div>
+    </div>
+  </div>
+}

@@ -179,6 +179,15 @@ A reference page (or tooltip/overlay) that translates numeric attribute values i
 
 ---
 
+## Platform Context
+
+- **Mobile-first for players**: The majority of participants will access the app on mobile (viewing teams, checking results, seeing their player card)
+- **Desktop for team building**: Assembling teams is done by one person and benefits from desktop screen space
+- **Long-term**: Players may be allowed to edit their own profile (e.g. fitness, photo) — stat editing TBD. On hold until the app gets traction with the group.
+- **Critical mobile surface**: The Team View (pitch view of assembled teams) must be fully mobile-optimized — it gets shared with all participants after team selection
+
+---
+
 ## Constraints
 
 - No authentication — fully public app
