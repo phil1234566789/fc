@@ -1,8 +1,57 @@
+<!-- Fullscreen detail overlay -->
+@if (cardMode() === 'detailed') {
+  <div class="detail-overlay">
+
+    <div class="detail-header">
+      <span class="detail-title">Teams</span>
+      <button class="detail-close" (click)="toggleMode()">✕</button>
+    </div>
+
+    <div class="detail-body">
+
+      <div class="detail-team">
+        <span class="detail-team-label detail-team-label--a">TA</span>
+        <div class="detail-row">
+          @for (p of posA().backs; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="a" />
+          }
+          @for (p of posA().mids; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="a" />
+          }
+          @for (p of posA().fwds; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="a" />
+          }
+        </div>
+      </div>
+
+      <div class="detail-divider"></div>
+
+      <div class="detail-team">
+        <span class="detail-team-label detail-team-label--b">TB</span>
+        <div class="detail-row">
+          @for (p of posB().backs; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="b" />
+          }
+          @for (p of posB().mids; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="b" />
+          }
+          @for (p of posB().fwds; track p.id) {
+            <app-pitch-player-card [player]="p" mode="detailed" team="b" />
+          }
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+}
+
 <div class="view">
 
   <!-- Action header -->
   <div class="action-bar">
     <button class="action-btn action-btn--reroll" (click)="reroll.emit()">↺ Re-roll</button>
+    <button class="action-btn action-btn--detail" (click)="toggleMode()">⊞ Detail</button>
     <button class="action-btn action-btn--accept" (click)="accept.emit()">✓ Accept</button>
   </div>
 

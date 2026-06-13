@@ -1,22 +1,43 @@
-<div class="pcard" [class.pcard--a]="team() === 'a'" [class.pcard--b]="team() === 'b'">
+<div class="pcard"
+     [class.pcard--a]="team() === 'a'"
+     [class.pcard--b]="team() === 'b'"
+     [class.pcard--detailed]="mode() === 'detailed'">
 
-  <img class="pcard__avatar" [src]="player().image" [alt]="player().name" />
+  @if (mode() === 'compact') {
 
-  <div class="pcard__info">
-    <span class="pcard__name" [style.color]="fitnessColor()">{{ shortName() }}</span>
-    <div class="pcard__row">
-      @for (s of top2(); track s.label) {
-        <span class="pcard__stat">
-          <span class="pcard__lbl">{{ s.label }}</span>
-          <span class="pcard__val">{{ s.value }}</span>
+    <img class="pcard__avatar" [src]="player().image" [alt]="player().name" />
+
+    <div class="pcard__info">
+      <span class="pcard__name" [style.color]="fitnessColor()">{{ shortName() }}</span>
+      <div class="pcard__row">
+        @for (s of top2(); track s.label) {
+          <span class="pcard__stat">
+            <span class="pcard__lbl">{{ s.label }}</span>
+            <span class="pcard__val">{{ s.value }}</span>
+          </span>
+        }
+        <span class="pcard__stat pcard__stat--tot">
+          <span class="pcard__lbl">TOT</span>
+          <span class="pcard__val pcard__val--tot">{{ total() }}</span>
         </span>
-      }
-      <span class="pcard__stat pcard__stat--tot">
-        <span class="pcard__lbl">TOT</span>
-        <span class="pcard__val pcard__val--tot">{{ total() }}</span>
-      </span>
+      </div>
     </div>
-  </div>
+
+  } @else {
+
+    <img class="pcard__avatar pcard__avatar--lg" [src]="player().image" [alt]="player().name" />
+    <span class="pcard__name pcard__name--lg" [style.color]="fitnessColor()">{{ shortName() }}</span>
+
+    <div class="pcard__stats">
+      @for (s of allStats(); track s.label) {
+        <span class="pcard__lbl">{{ s.label }}</span>
+        <span class="pcard__val">{{ s.value }}</span>
+      }
+      <span class="pcard__lbl pcard__lbl--tot">TOT</span>
+      <span class="pcard__val pcard__val--tot">{{ total() }}</span>
+    </div>
+
+  }
 
   <span class="pcard__fit" [style.background]="fitnessColor()"></span>
 
