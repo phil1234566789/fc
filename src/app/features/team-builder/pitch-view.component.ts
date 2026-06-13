@@ -3,6 +3,7 @@ import { Component, computed, input, output, signal } from '@angular/core';
 import { BalanceResult } from '../../services/balance.service';
 import { Player, computeAge } from '../../models/player.model';
 import { PitchPlayerCardComponent } from './pitch-player-card.component';
+import { PlayerCardComponent } from '../../shared/player-card/player-card.component';
 
 type StatKey = 'pac' | 'sho' | 'pas' | 'dri' | 'def' | 'phy' | 'tec' | 'overall';
 
@@ -23,7 +24,7 @@ interface CompareRow {
 @Component({
   selector: 'app-pitch-view',
   standalone: true,
-  imports: [PitchPlayerCardComponent],
+  imports: [PitchPlayerCardComponent, PlayerCardComponent],
   templateUrl: './pitch-view.component.html',
   styleUrl: './pitch-view.component.scss',
 })

@@ -77,6 +77,12 @@
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
+.detail-card {
+  width: 150px;
+  min-width: 150px;
+  flex-shrink: 0;
+}
+
 .detail-center-line {
   height: 1px;
   background: rgba(255, 255, 255, 0.28);
