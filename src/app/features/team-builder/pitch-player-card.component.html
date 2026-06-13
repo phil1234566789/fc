@@ -3,20 +3,18 @@
   <img class="pcard__avatar" [src]="player().image" [alt]="player().name" />
 
   <div class="pcard__info">
-    <div class="pcard__top-row">
-      <span class="pcard__name">{{ shortName() }}</span>
-      <div class="pcard__tot-wrap">
-        <span class="pcard__tot">{{ total() }}</span>
-        <span class="pcard__tot-lbl">TOT</span>
-      </div>
-    </div>
-    <div class="pcard__stats">
+    <span class="pcard__name" [style.color]="fitnessColor()">{{ shortName() }}</span>
+    <div class="pcard__row">
       @for (s of top2(); track s.label) {
-        <div class="pcard__stat">
-          <span class="pcard__stat-lbl">{{ s.label }}</span>
-          <span class="pcard__stat-val">{{ s.value }}</span>
-        </div>
+        <span class="pcard__stat">
+          <span class="pcard__lbl">{{ s.label }}</span>
+          <span class="pcard__val">{{ s.value }}</span>
+        </span>
       }
+      <span class="pcard__stat pcard__stat--tot">
+        <span class="pcard__lbl">TOT</span>
+        <span class="pcard__val pcard__val--tot">{{ total() }}</span>
+      </span>
     </div>
   </div>
 

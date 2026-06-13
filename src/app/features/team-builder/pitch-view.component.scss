@@ -131,11 +131,31 @@
 .center-line {
   height: 1px;
   background: rgba(255, 255, 255, 0.28);
-  margin: 0 16px;
+  margin: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.pitch-team-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+
+  &--a {
+    color: var(--gold);
+    text-align: left;
+    padding-bottom: 2px;
+  }
+
+  &--b {
+    color: rgba(180, 210, 255, 0.9);
+    text-align: left;
+    padding-top: 2px;
+  }
 }
 
 .center-dot {

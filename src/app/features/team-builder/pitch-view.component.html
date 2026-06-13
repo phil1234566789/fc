@@ -21,6 +21,7 @@
 
     <!-- Team A: backs at top, fwds near center -->
     <div class="half half--a">
+      <span class="pitch-team-label pitch-team-label--a">Team A</span>
       <div class="row">
         @for (p of posA().backs; track p.id) {
           <app-pitch-player-card [player]="p" [mode]="cardMode()" team="a" />
@@ -57,6 +58,7 @@
           <app-pitch-player-card [player]="p" [mode]="cardMode()" team="b" />
         }
       </div>
+      <span class="pitch-team-label pitch-team-label--b">Team B</span>
     </div>
 
   </div>

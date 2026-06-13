@@ -79,7 +79,48 @@ export class BalanceService {
       }
     }
 
+    // Step 6: Balance unfit players (fitness >= 4) across teams
+    this.balanceFitness(teamA, teamB);
+
     return { teamA, teamB };
+  }
+
+  private balanceFitness(teamA: Player[], teamB: Player[]): void {
+    const isUnfit = (p: Player) => p.fitness >= 4;
+
+    for (let i = 0; i < 3; i++) {
+      const unfitA = teamA.filter(isUnfit);
+      const unfitB = teamB.filter(isUnfit);
+      if (Math.abs(unfitA.length - unfitB.length) <= 1) break;
+
+      // Heavy team has more unfit players — swap one of theirs with a fit player from the other
+      const [heavy, light] = unfitA.length > unfitB.length ? [teamA, teamB] : [teamB, teamA];
+      const unfitPool = heavy.filter(isUnfit);
+      const fitPool = light.filter(p => !isUnfit(p));
+      if (!unfitPool.length || !fitPool.length) break;
+
+      // Pick the swap that minimises the change in stat-sum difference
+      let best: { hi: number; li: number; delta: number } | null = null;
+
+      for (const hu of unfitPool) {
+        for (const lf of fitPool) {
+          const delta = Math.abs(
+            (this.totalSum(heavy) - this.playerSum(hu) + this.playerSum(lf)) -
+            (this.totalSum(light) - this.playerSum(lf) + this.playerSum(hu)),
+          );
+          if (!best || delta < best.delta) {
+            best = { hi: heavy.indexOf(hu), li: light.indexOf(lf), delta };
+          }
+        }
+      }
+
+      if (!best) break;
+      [heavy[best.hi], light[best.li]] = [light[best.li], heavy[best.hi]];
+    }
+  }
+
+  private playerSum(p: Player): number {
+    return ALL_STATS.reduce((sum, s) => sum + p[s], 0);
   }
 
   private shuffle<T>(arr: T[]): T[] {
