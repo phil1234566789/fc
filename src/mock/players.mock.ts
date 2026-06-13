@@ -13,7 +13,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p02',
     name: 'Michael Olise',
-    image: '/players/olise.jpg',
+    image: 'players/olise.jpg',
     bday: '2001-12-12',
     fitness: 1,
     pac: 88, sho: 78, pas: 74, dri: 88, def: 36, phy: 62, tec: 85,
@@ -31,7 +31,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p04',
     name: 'Upamecano',
-    image: '/players/upamecano.jpg',
+    image: 'players/upamecano.jpg',
     bday: '1998-10-27',
     fitness: 2,
     pac: 80, sho: 42, pas: 66, dri: 60, def: 86, phy: 88, tec: 62,
@@ -58,7 +58,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p07',
     name: 'Harry Kane',
-    image: '/players/kane.jpg',
+    image: 'players/kane.jpg',
     bday: '1993-07-28',
     fitness: 1,
     pac: 70, sho: 93, pas: 80, dri: 78, def: 42, phy: 82, tec: 80,
@@ -76,7 +76,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p09',
     name: 'Thomas Müller',
-    image: '/players/mueller.jpg',
+    image: 'players/mueller.jpg',
     bday: '1989-09-13',
     fitness: 3,
     pac: 66, sho: 80, pas: 82, dri: 72, def: 58, phy: 72, tec: 78,
@@ -85,7 +85,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p10',
     name: 'Leo Messi',
-    image: '/players/messi.jpg',
+    image: 'players/messi.jpg',
     bday: '1987-06-24',
     fitness: 2,
     pac: 62, sho: 88, pas: 90, dri: 92, def: 38, phy: 58, tec: 95,
@@ -103,7 +103,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p12',
     name: 'Joshua Kimmich',
-    image: '/players/kimmich.jpeg',
+    image: 'players/kimmich.jpeg',
     bday: '1995-02-08',
     fitness: 1,
     pac: 70, sho: 68, pas: 90, dri: 76, def: 82, phy: 72, tec: 82,

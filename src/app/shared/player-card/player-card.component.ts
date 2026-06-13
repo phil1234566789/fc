@@ -51,4 +51,18 @@ export class PlayerCardComponent {
 
   protected fitnessColor = computed(() => FITNESS_COLORS[this.player().fitness]);
   protected fitnessLabel = computed(() => FITNESS_LABELS[this.player().fitness]);
+
+  protected top2Labels = computed(() => {
+    const p = this.player();
+    const s = [
+      { label: 'PAC', value: p.pac },
+      { label: 'SHO', value: p.sho },
+      { label: 'PAS', value: p.pas },
+      { label: 'DRI', value: p.dri },
+      { label: 'DEF', value: p.def },
+      { label: 'PHY', value: p.phy },
+      { label: 'TEC', value: p.tec },
+    ];
+    return new Set(s.sort((a, b) => b.value - a.value).slice(0, 2).map(s => s.label));
+  });
 }

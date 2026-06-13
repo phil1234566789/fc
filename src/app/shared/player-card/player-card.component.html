@@ -12,13 +12,13 @@
         [title]="fitnessLabel()"
       ></div>
     </div>
-    <div class="card__name">{{ player().name }}</div>
+    <div class="card__name" [style.color]="fitnessColor()">{{ player().name }}</div>
   </div>
 
   @if (!compact()) {
     <div class="card__stats">
       @for (stat of stats(); track stat.label) {
-        <div class="stat">
+        <div class="stat" [class.stat--top]="size() === 'sm' && top2Labels().has(stat.label)">
           <span class="stat__value">{{ stat.value }}</span>
           <span class="stat__label">{{ stat.label }}</span>
         </div>
