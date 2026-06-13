@@ -6,10 +6,9 @@ import { Player, computeAge } from '../../models/player.model';
 type StatKey = 'pac' | 'sho' | 'pas' | 'dri' | 'def' | 'phy' | 'tec' | 'overall';
 
 interface TeamPositions {
-  fwds: Player[];
-  defs: Player[];
-  gk: Player;
-  sub: Player;
+  backs: Player[];  // most defensive — placed far from center
+  mids: Player[];
+  fwds: Player[];   // most attacking — placed close to center
 }
 
 @Component({
@@ -27,19 +26,13 @@ export class PitchViewComponent {
   posB = computed(() => this.positionTeam(this.result().teamB));
 
   private positionTeam(team: Player[]): TeamPositions {
-    const sorted = [...team].sort((a, b) => a.overall - b.overall);
-    const sub = sorted[0];
-    const active = sorted.slice(1);
-
-    // Higher score = more forward tendency
     const tendency = (p: Player) => (p.pac + p.sho + p.dri) / 3 - p.def;
-    active.sort((a, b) => tendency(a) - tendency(b));
-
+    const sorted = [...team].sort((a, b) => tendency(a) - tendency(b));
+    // sorted[0..1] = most defensive, sorted[4..5] = most attacking
     return {
-      gk: active[0],
-      defs: [active[1], active[2]],
-      fwds: [active[3], active[4]],
-      sub,
+      backs: [sorted[0], sorted[1]],
+      mids:  [sorted[2], sorted[3]],
+      fwds:  [sorted[4], sorted[5]],
     };
   }
 

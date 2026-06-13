@@ -5,6 +5,7 @@ import { DataService } from '../../services/data.service';
 import { BalanceService, BalanceResult } from '../../services/balance.service';
 import { PitchViewComponent } from './pitch-view.component';
 import { Player } from '../../models/player.model';
+import { MOCK_PLAYERS } from '../../../mock/players.mock'; // TODO: remove after testing
 
 const REQUIRED = 12;
 
@@ -21,7 +22,7 @@ export class TeamBuilderComponent {
 
   players = toSignal(this.data.getPlayers(), { initialValue: [] as Player[] });
 
-  selectedIds = signal<Set<string>>(new Set());
+  selectedIds = signal<Set<string>>(new Set(MOCK_PLAYERS.map(p => p.id))); // TODO: remove after testing
   selectedCount = computed(() => this.selectedIds().size);
   canGenerate = computed(() => this.selectedIds().size === REQUIRED);
   readonly required = REQUIRED;

@@ -5,7 +5,7 @@
 .view {
   max-width: 480px;
   margin: 0 auto;
-  padding: 16px 12px 96px;
+  padding: 16px 12px 24px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -63,6 +63,7 @@
 // ─── Pitch ───────────────────────────────────────────────────────────────────
 
 .pitch {
+  position: relative;
   background:
     radial-gradient(ellipse 55% 35% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%),
     linear-gradient(180deg,
@@ -111,6 +112,40 @@
   position: absolute;
 }
 
+.pitch-actions {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 1;
+}
+
+.pitch-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s;
+
+  &:hover { opacity: 0.85; }
+
+  &--reroll {
+    background: rgba(10, 10, 20, 0.82);
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+  }
+
+  &--accept {
+    background: var(--gold);
+    color: #0a0a14;
+  }
+}
+
 // ─── Player Token ─────────────────────────────────────────────────────────────
 
 .token {
@@ -127,11 +162,6 @@
   object-fit: cover;
   border: 2.5px solid;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
-
-  &--gk {
-    width: 36px;
-    height: 36px;
-  }
 }
 
 .token--a .avatar { border-color: var(--gold); }
@@ -157,94 +187,4 @@
   }
 }
 
-.gk-tag {
-  font-size: 0.5rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.6);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-}
 
-// ─── Substitutes ─────────────────────────────────────────────────────────────
-
-.subs {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 14px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
-
-.sub-slot {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  &--right {
-    flex-direction: row-reverse;
-  }
-}
-
-.sub-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.token--small .avatar {
-  width: 34px;
-  height: 34px;
-}
-
-// ─── Footer ──────────────────────────────────────────────────────────────────
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  gap: 10px;
-  padding: 12px 16px;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-}
-
-.reroll-btn {
-  flex: 1;
-  padding: 13px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text);
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-
-  &:hover {
-    background: var(--gold-faint);
-    border-color: var(--gold-muted);
-  }
-}
-
-.accept-btn {
-  flex: 2;
-  padding: 13px;
-  border: none;
-  border-radius: 8px;
-  background: var(--gold);
-  color: #0a0a14;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: opacity 0.15s;
-
-  &:hover { opacity: 0.88; }
-}

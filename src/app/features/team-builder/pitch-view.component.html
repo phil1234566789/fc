@@ -13,8 +13,24 @@
   <!-- Pitch -->
   <div class="pitch">
 
-    <!-- Team A attacks down -->
+    <!-- Team A: backs at top, fwds near center -->
     <div class="half half--a">
+      <div class="row">
+        @for (p of posA().backs; track p.id) {
+          <div class="token token--a">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+      <div class="row">
+        @for (p of posA().mids; track p.id) {
+          <div class="token token--a">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
       <div class="row">
         @for (p of posA().fwds; track p.id) {
           <div class="token token--a">
@@ -23,36 +39,19 @@
           </div>
         }
       </div>
-      <div class="row">
-        @for (p of posA().defs; track p.id) {
-          <div class="token token--a">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
-        }
-      </div>
-      <div class="row">
-        <div class="token token--a">
-          <img class="avatar avatar--gk" [src]="posA().gk.image" [alt]="posA().gk.name" />
-          <span class="pname">{{ shortName(posA().gk.name) }}</span>
-          <span class="gk-tag">GK</span>
-        </div>
-      </div>
     </div>
 
     <div class="center-line"><div class="center-dot"></div></div>
 
-    <!-- Team B attacks up -->
+    <div class="pitch-actions">
+      <button class="pitch-btn pitch-btn--reroll" (click)="reroll.emit()">↺</button>
+      <button class="pitch-btn pitch-btn--accept" (click)="accept.emit()">✓ Accept</button>
+    </div>
+
+    <!-- Team B: fwds near center, backs at bottom -->
     <div class="half half--b">
       <div class="row">
-        <div class="token token--b">
-          <img class="avatar avatar--gk" [src]="posB().gk.image" [alt]="posB().gk.name" />
-          <span class="pname">{{ shortName(posB().gk.name) }}</span>
-          <span class="gk-tag">GK</span>
-        </div>
-      </div>
-      <div class="row">
-        @for (p of posB().defs; track p.id) {
+        @for (p of posB().fwds; track p.id) {
           <div class="token token--b">
             <img class="avatar" [src]="p.image" [alt]="p.name" />
             <span class="pname">{{ shortName(p.name) }}</span>
@@ -60,7 +59,15 @@
         }
       </div>
       <div class="row">
-        @for (p of posB().fwds; track p.id) {
+        @for (p of posB().mids; track p.id) {
+          <div class="token token--b">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+      <div class="row">
+        @for (p of posB().backs; track p.id) {
           <div class="token token--b">
             <img class="avatar" [src]="p.image" [alt]="p.name" />
             <span class="pname">{{ shortName(p.name) }}</span>
@@ -81,27 +88,4 @@
     <span class="stat">Fit <b>{{ avgFitness(result().teamB) }}</b></span>
   </div>
 
-  <!-- Substitutes -->
-  <div class="subs">
-    <div class="sub-slot">
-      <span class="sub-label">Sub A</span>
-      <div class="token token--a token--small">
-        <img class="avatar" [src]="posA().sub.image" [alt]="posA().sub.name" />
-        <span class="pname pname--light">{{ shortName(posA().sub.name) }}</span>
-      </div>
-    </div>
-    <div class="sub-slot sub-slot--right">
-      <div class="token token--b token--small">
-        <img class="avatar" [src]="posB().sub.image" [alt]="posB().sub.name" />
-        <span class="pname pname--light">{{ shortName(posB().sub.name) }}</span>
-      </div>
-      <span class="sub-label">Sub B</span>
-    </div>
-  </div>
-
-</div>
-
-<div class="footer">
-  <button class="reroll-btn" (click)="reroll.emit()">↺ Re-roll</button>
-  <button class="accept-btn" (click)="accept.emit()">Accept & Save</button>
 </div>
