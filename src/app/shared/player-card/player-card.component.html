@@ -1,26 +1,19 @@
 <div class="card">
-  <div class="card__top">
-    <div class="card__total-wrap">
-      <div class="card__total-value">{{ total() }}</div>
-      <div class="card__total-label">TOTAL</div>
+
+  <div class="card__hero" [style.backgroundImage]="'url(' + player().image + ')'">
+    <div class="card__top">
+      <div class="card__total-wrap">
+        <div class="card__total-value">{{ total() }}</div>
+        <div class="card__total-label">TOTAL</div>
+      </div>
+      <div
+        class="card__fitness"
+        [style.background-color]="fitnessColor()"
+        [title]="fitnessLabel()"
+      ></div>
     </div>
-    <div
-      class="card__fitness"
-      [style.background-color]="fitnessColor()"
-      [title]="fitnessLabel()"
-    ></div>
+    <div class="card__name">{{ player().name }}</div>
   </div>
-
-  <div class="card__photo-wrap">
-    <img
-      class="card__photo"
-      [src]="player().image"
-      [alt]="player().name"
-      (error)="onImgError($event)"
-    />
-  </div>
-
-  <div class="card__name">{{ player().name }}</div>
 
   @if (!compact()) {
     <div class="card__stats">

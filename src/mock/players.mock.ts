@@ -85,7 +85,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p10',
     name: 'Leo Messi',
-    image: 'https://placehold.co/200x200/1a1a2e/ffd700?text=MSS',
+    image: '/players/messi.jpg',
     bday: '1987-06-24',
     fitness: 2,
     pac: 62, sho: 88, pas: 90, dri: 92, def: 38, phy: 58, tec: 95,

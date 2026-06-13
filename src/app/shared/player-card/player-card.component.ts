@@ -50,10 +50,4 @@ export class PlayerCardComponent {
 
   protected fitnessColor = computed(() => FITNESS_COLORS[this.player().fitness]);
   protected fitnessLabel = computed(() => FITNESS_LABELS[this.player().fitness]);
-
-  protected onImgError(event: Event): void {
-    const img = event.target as HTMLImageElement;
-    const initial = this.player().name.charAt(0).toUpperCase();
-    img.src = `https://placehold.co/100x100/1a1500/c9a227?text=${initial}`;
-  }
 }
