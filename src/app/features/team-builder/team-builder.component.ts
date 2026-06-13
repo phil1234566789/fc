@@ -2,6 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { DataService } from '../../services/data.service';
+import { BalanceService, BalanceResult } from '../../services/balance.service';
 import { Player } from '../../models/player.model';
 
 const REQUIRED = 12;
@@ -14,6 +15,7 @@ const REQUIRED = 12;
 })
 export class TeamBuilderComponent {
   private data = inject(DataService);
+  private balance = inject(BalanceService);
 
   players = toSignal(this.data.getPlayers(), { initialValue: [] as Player[] });
 
@@ -21,6 +23,8 @@ export class TeamBuilderComponent {
   selectedCount = computed(() => this.selectedIds().size);
   canGenerate = computed(() => this.selectedIds().size === REQUIRED);
   readonly required = REQUIRED;
+
+  result = signal<BalanceResult | null>(null);
 
   toggle(id: string): void {
     this.selectedIds.update(set => {
@@ -35,6 +39,7 @@ export class TeamBuilderComponent {
   }
 
   generate(): void {
-    // F4.2 — balance algorithm
+    const selected = this.players().filter(p => this.selectedIds().has(p.id));
+    this.result.set(this.balance.balance(selected));
   }
 }
