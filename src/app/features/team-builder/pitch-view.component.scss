@@ -11,13 +11,53 @@
   gap: 8px;
 }
 
-// ─── Team Stats Strips ───────────────────────────────────────────────────────
+// ─── Action header ────────────────────────────────────────────────────────────
+
+.action-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--gold-faint);
+    color: var(--gold);
+    border-color: var(--gold-muted);
+  }
+
+  &--accept {
+    background: var(--gold);
+    color: #0a0a14;
+    border-color: var(--gold);
+
+    &:hover {
+      opacity: 0.88;
+      background: var(--gold);
+      color: #0a0a14;
+    }
+  }
+}
+
+// ─── Team Stats Strips ────────────────────────────────────────────────────────
 
 .team-stats {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 12px;
+  padding: 7px 10px;
   border-radius: 6px;
   flex-wrap: wrap;
 
@@ -37,7 +77,7 @@
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  margin-right: 4px;
+  margin-right: 2px;
 
   .team-stats--a & { color: var(--gold); }
   .team-stats--b & { color: rgba(180, 210, 255, 0.9); }
@@ -47,16 +87,12 @@
   font-size: 0.7rem;
   color: var(--text-muted);
 
-  b {
-    color: var(--text);
-    font-weight: 600;
-  }
+  b { color: var(--text); font-weight: 600; }
 
   & + .stat::before {
     content: '·';
     margin-right: 6px;
-    color: var(--text-muted);
-    opacity: 0.4;
+    opacity: 0.35;
   }
 }
 
@@ -66,14 +102,7 @@
   position: relative;
   background:
     radial-gradient(ellipse 55% 35% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%),
-    linear-gradient(180deg,
-      #174d15 0%,
-      #1e6b1c 20%,
-      #226e20 40%,
-      #226e20 60%,
-      #1e6b1c 80%,
-      #174d15 100%
-    );
+    linear-gradient(180deg, #174d15 0%, #1e6b1c 20%, #226e20 40%, #226e20 60%, #1e6b1c 80%, #174d15 100%);
   border: 2px solid rgba(255, 255, 255, 0.28);
   border-radius: 10px;
   overflow: hidden;
@@ -82,21 +111,27 @@
 .half {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 8px;
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px 10px;
 }
 
 .row {
   display: flex;
   justify-content: center;
-  gap: 36px;
+  gap: 8px;
+
+  app-pitch-player-card {
+    flex: 1;
+    max-width: 160px;
+    min-width: 0;
+  }
 }
 
 .center-line {
   height: 1px;
   background: rgba(255, 255, 255, 0.28);
-  margin: 0 20px;
+  margin: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,80 +146,4 @@
   background: rgba(255, 255, 255, 0.15);
   position: absolute;
 }
-
-.pitch-actions {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  display: flex;
-  gap: 6px;
-  z-index: 1;
-}
-
-.pitch-btn {
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  border: none;
-  transition: opacity 0.15s;
-
-  &:hover { opacity: 0.85; }
-
-  &--reroll {
-    background: rgba(10, 10, 20, 0.82);
-    color: rgba(255, 255, 255, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-  }
-
-  &--accept {
-    background: var(--gold);
-    color: #0a0a14;
-  }
-}
-
-// ─── Player Token ─────────────────────────────────────────────────────────────
-
-.token {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2.5px solid;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
-}
-
-.token--a .avatar { border-color: var(--gold); }
-.token--b .avatar { border-color: rgba(180, 210, 255, 0.85); }
-
-.pname {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
-  text-align: center;
-  max-width: 58px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
-
-  &--light {
-    text-shadow: none;
-    color: var(--text);
-    font-weight: 500;
-    font-size: 0.78rem;
-  }
-}
-
 

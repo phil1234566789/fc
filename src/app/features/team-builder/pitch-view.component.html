@@ -1,5 +1,14 @@
 <div class="view">
 
+  <!-- Action header -->
+  <div class="action-bar">
+    <button class="action-btn action-btn--toggle" (click)="toggleMode()">
+      {{ cardMode() === 'compact' ? '⊞ Details' : '⊟ Compact' }}
+    </button>
+    <button class="action-btn action-btn--reroll" (click)="reroll.emit()">↺ Re-roll</button>
+    <button class="action-btn action-btn--accept" (click)="accept.emit()">✓ Accept</button>
+  </div>
+
   <!-- Team A stats -->
   <div class="team-stats team-stats--a">
     <span class="team-label">Team A</span>
@@ -11,67 +20,44 @@
   </div>
 
   <!-- Pitch -->
-  <div class="pitch">
+  <div class="pitch" [class.pitch--detailed]="cardMode() === 'detailed'">
 
     <!-- Team A: backs at top, fwds near center -->
     <div class="half half--a">
       <div class="row">
         @for (p of posA().backs; track p.id) {
-          <div class="token token--a">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="a" />
         }
       </div>
       <div class="row">
         @for (p of posA().mids; track p.id) {
-          <div class="token token--a">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="a" />
         }
       </div>
       <div class="row">
         @for (p of posA().fwds; track p.id) {
-          <div class="token token--a">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="a" />
         }
       </div>
     </div>
 
     <div class="center-line"><div class="center-dot"></div></div>
 
-    <div class="pitch-actions">
-      <button class="pitch-btn pitch-btn--reroll" (click)="reroll.emit()">↺</button>
-      <button class="pitch-btn pitch-btn--accept" (click)="accept.emit()">✓ Accept</button>
-    </div>
-
     <!-- Team B: fwds near center, backs at bottom -->
     <div class="half half--b">
       <div class="row">
         @for (p of posB().fwds; track p.id) {
-          <div class="token token--b">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="b" />
         }
       </div>
       <div class="row">
         @for (p of posB().mids; track p.id) {
-          <div class="token token--b">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="b" />
         }
       </div>
       <div class="row">
         @for (p of posB().backs; track p.id) {
-          <div class="token token--b">
-            <img class="avatar" [src]="p.image" [alt]="p.name" />
-            <span class="pname">{{ shortName(p.name) }}</span>
-          </div>
+          <app-pitch-player-card [player]="p" [mode]="cardMode()" team="b" />
         }
       </div>
     </div>

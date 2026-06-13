@@ -1,7 +1,8 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 
 import { BalanceResult } from '../../services/balance.service';
 import { Player, computeAge } from '../../models/player.model';
+import { PitchPlayerCardComponent } from './pitch-player-card.component';
 
 type StatKey = 'pac' | 'sho' | 'pas' | 'dri' | 'def' | 'phy' | 'tec' | 'overall';
 
@@ -14,6 +15,7 @@ interface TeamPositions {
 @Component({
   selector: 'app-pitch-view',
   standalone: true,
+  imports: [PitchPlayerCardComponent],
   templateUrl: './pitch-view.component.html',
   styleUrl: './pitch-view.component.scss',
 })
@@ -24,6 +26,11 @@ export class PitchViewComponent {
 
   posA = computed(() => this.positionTeam(this.result().teamA));
   posB = computed(() => this.positionTeam(this.result().teamB));
+
+  cardMode = signal<'compact' | 'detailed'>('compact');
+  toggleMode(): void {
+    this.cardMode.update(m => m === 'compact' ? 'detailed' : 'compact');
+  }
 
   private positionTeam(team: Player[]): TeamPositions {
     const tendency = (p: Player) => (p.pac + p.sho + p.dri) / 3 - p.def;
