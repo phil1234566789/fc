@@ -50,52 +50,6 @@
   }
 }
 
-// ─── Team Stats Strips ────────────────────────────────────────────────────────
-
-.team-stats {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 10px;
-  border-radius: 6px;
-  flex-wrap: wrap;
-
-  &--a {
-    background: rgba(201, 162, 39, 0.1);
-    border: 1px solid rgba(201, 162, 39, 0.3);
-  }
-
-  &--b {
-    background: rgba(180, 210, 255, 0.07);
-    border: 1px solid rgba(180, 210, 255, 0.2);
-  }
-}
-
-.team-label {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin-right: 2px;
-
-  .team-stats--a & { color: var(--gold); }
-  .team-stats--b & { color: rgba(180, 210, 255, 0.9); }
-}
-
-.stat {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-
-  b { color: var(--text); font-weight: 600; }
-
-  & + .stat::before {
-    content: '·';
-    margin-right: 6px;
-    opacity: 0.35;
-  }
-}
-
 // ─── Pitch ───────────────────────────────────────────────────────────────────
 
 .pitch {
@@ -165,5 +119,74 @@
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: rgba(255, 255, 255, 0.15);
   position: absolute;
+}
+
+// ─── Compare Table ───────────────────────────────────────────────────────────
+
+.compare {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 52px 1fr 1fr;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+
+    &--header {
+      background: rgba(255, 255, 255, 0.02);
+    }
+  }
+
+  &__label {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 5px 0 5px 10px;
+  }
+
+  &__head {
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 8px;
+
+    &--a {
+      color: var(--gold);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    &--b {
+      color: rgba(180, 210, 255, 0.9);
+    }
+  }
+
+  &__num {
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    padding: 4px 8px;
+
+    &:nth-child(2) {
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    &--win {
+      color: var(--text);
+      font-weight: 700;
+    }
+  }
 }
 

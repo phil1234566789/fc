@@ -6,16 +6,6 @@
     <button class="action-btn action-btn--accept" (click)="accept.emit()">✓ Accept</button>
   </div>
 
-  <!-- Team A stats -->
-  <div class="team-stats team-stats--a">
-    <span class="team-label">Team A</span>
-    <span class="stat">OVR <b>{{ avg(result().teamA, 'overall') }}</b></span>
-    <span class="stat">PAC <b>{{ avg(result().teamA, 'pac') }}</b></span>
-    <span class="stat">DEF <b>{{ avg(result().teamA, 'def') }}</b></span>
-    <span class="stat">Ø <b>{{ avgAge(result().teamA) }}y</b></span>
-    <span class="stat">Fit <b>{{ avgFitness(result().teamA) }}</b></span>
-  </div>
-
   <!-- Pitch -->
   <div class="pitch" [class.pitch--detailed]="cardMode() === 'detailed'">
 
@@ -63,14 +53,20 @@
 
   </div>
 
-  <!-- Team B stats -->
-  <div class="team-stats team-stats--b">
-    <span class="team-label">Team B</span>
-    <span class="stat">OVR <b>{{ avg(result().teamB, 'overall') }}</b></span>
-    <span class="stat">PAC <b>{{ avg(result().teamB, 'pac') }}</b></span>
-    <span class="stat">DEF <b>{{ avg(result().teamB, 'def') }}</b></span>
-    <span class="stat">Ø <b>{{ avgAge(result().teamB) }}y</b></span>
-    <span class="stat">Fit <b>{{ avgFitness(result().teamB) }}</b></span>
+  <!-- Team comparison table -->
+  <div class="compare">
+    <div class="compare__row compare__row--header">
+      <span class="compare__label"></span>
+      <span class="compare__head compare__head--a">Team A</span>
+      <span class="compare__head compare__head--b">Team B</span>
+    </div>
+    @for (row of compareRows(); track row.label) {
+      <div class="compare__row">
+        <span class="compare__label">{{ row.label }}</span>
+        <span class="compare__num" [class.compare__num--win]="row.aWins">{{ row.a }}</span>
+        <span class="compare__num" [class.compare__num--win]="row.bWins">{{ row.b }}</span>
+      </div>
+    }
   </div>
 
 </div>
