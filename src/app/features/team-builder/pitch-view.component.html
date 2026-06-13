@@ -10,13 +10,13 @@
         <span class="detail-team-label detail-team-label--a">Team A</span>
         <div class="detail-row">
           @for (p of posA().backs; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
           @for (p of posA().mids; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
           @for (p of posA().fwds; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
         </div>
       </div>
@@ -27,13 +27,13 @@
         <span class="detail-team-label detail-team-label--b">Team B</span>
         <div class="detail-row">
           @for (p of posB().backs; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
           @for (p of posB().mids; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
           @for (p of posB().fwds; track p.id) {
-            <app-player-card class="detail-card" [player]="p" />
+            <app-player-card class="detail-card" [player]="p" size="sm" />
           }
         </div>
       </div>

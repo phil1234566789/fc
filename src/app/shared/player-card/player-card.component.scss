@@ -151,6 +151,31 @@
     font-size: 0.65rem;
     color: var(--text-muted);
   }
+
+  // ─── Small variant (detail overlay) ─────────────────────────────────────────
+
+  &--sm {
+    padding: 10px 10px 8px;
+
+    .card__hero {
+      margin: -10px -10px 0 -10px;
+      min-height: 90px;
+      padding: 7px 10px 7px;
+    }
+
+    .card__total-value { font-size: 1.4rem; }
+    .card__total-label { font-size: 0.4rem; }
+    .card__name        { font-size: 0.62rem; }
+    .card__fitness     { width: 7px; height: 7px; }
+
+    .card__stats {
+      gap: 2px;
+      padding-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    .stat__value { font-weight: 300; }
+  }
 }
 
 .stat {
@@ -160,7 +185,7 @@
   gap: 2px;
 
   &__value {
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1;
     color: var(--text);

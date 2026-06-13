@@ -58,7 +58,7 @@ export const MOCK_PLAYERS: Player[] = [
   {
     id: 'p07',
     name: 'Harry Kane',
-    image: 'https://placehold.co/200x200/1a1a2e/ffd700?text=KAN',
+    image: '/players/kane.jpg',
     bday: '1993-07-28',
     fitness: 1,
     pac: 70, sho: 93, pas: 80, dri: 78, def: 42, phy: 82, tec: 80,

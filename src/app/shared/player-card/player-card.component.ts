@@ -28,6 +28,7 @@ export class PlayerCardComponent {
   gamesPlayed = input<number>();
   lastResults = input<('W' | 'D' | 'L')[]>();
   compact = input<boolean>(false);
+  size = input<'sm' | 'md'>('md');
 
   protected total = computed(() => {
     const p = this.player();
