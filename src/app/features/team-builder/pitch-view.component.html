@@ -1,0 +1,107 @@
+<div class="view">
+
+  <!-- Team A stats -->
+  <div class="team-stats team-stats--a">
+    <span class="team-label">Team A</span>
+    <span class="stat">OVR <b>{{ avg(result().teamA, 'overall') }}</b></span>
+    <span class="stat">PAC <b>{{ avg(result().teamA, 'pac') }}</b></span>
+    <span class="stat">DEF <b>{{ avg(result().teamA, 'def') }}</b></span>
+    <span class="stat">Ø <b>{{ avgAge(result().teamA) }}y</b></span>
+    <span class="stat">Fit <b>{{ avgFitness(result().teamA) }}</b></span>
+  </div>
+
+  <!-- Pitch -->
+  <div class="pitch">
+
+    <!-- Team A attacks down -->
+    <div class="half half--a">
+      <div class="row">
+        @for (p of posA().fwds; track p.id) {
+          <div class="token token--a">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+      <div class="row">
+        @for (p of posA().defs; track p.id) {
+          <div class="token token--a">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+      <div class="row">
+        <div class="token token--a">
+          <img class="avatar avatar--gk" [src]="posA().gk.image" [alt]="posA().gk.name" />
+          <span class="pname">{{ shortName(posA().gk.name) }}</span>
+          <span class="gk-tag">GK</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-line"><div class="center-dot"></div></div>
+
+    <!-- Team B attacks up -->
+    <div class="half half--b">
+      <div class="row">
+        <div class="token token--b">
+          <img class="avatar avatar--gk" [src]="posB().gk.image" [alt]="posB().gk.name" />
+          <span class="pname">{{ shortName(posB().gk.name) }}</span>
+          <span class="gk-tag">GK</span>
+        </div>
+      </div>
+      <div class="row">
+        @for (p of posB().defs; track p.id) {
+          <div class="token token--b">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+      <div class="row">
+        @for (p of posB().fwds; track p.id) {
+          <div class="token token--b">
+            <img class="avatar" [src]="p.image" [alt]="p.name" />
+            <span class="pname">{{ shortName(p.name) }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Team B stats -->
+  <div class="team-stats team-stats--b">
+    <span class="team-label">Team B</span>
+    <span class="stat">OVR <b>{{ avg(result().teamB, 'overall') }}</b></span>
+    <span class="stat">PAC <b>{{ avg(result().teamB, 'pac') }}</b></span>
+    <span class="stat">DEF <b>{{ avg(result().teamB, 'def') }}</b></span>
+    <span class="stat">Ø <b>{{ avgAge(result().teamB) }}y</b></span>
+    <span class="stat">Fit <b>{{ avgFitness(result().teamB) }}</b></span>
+  </div>
+
+  <!-- Substitutes -->
+  <div class="subs">
+    <div class="sub-slot">
+      <span class="sub-label">Sub A</span>
+      <div class="token token--a token--small">
+        <img class="avatar" [src]="posA().sub.image" [alt]="posA().sub.name" />
+        <span class="pname pname--light">{{ shortName(posA().sub.name) }}</span>
+      </div>
+    </div>
+    <div class="sub-slot sub-slot--right">
+      <div class="token token--b token--small">
+        <img class="avatar" [src]="posB().sub.image" [alt]="posB().sub.name" />
+        <span class="pname pname--light">{{ shortName(posB().sub.name) }}</span>
+      </div>
+      <span class="sub-label">Sub B</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <button class="reroll-btn" (click)="reroll.emit()">↺ Re-roll</button>
+  <button class="accept-btn" (click)="accept.emit()">Accept & Save</button>
+</div>

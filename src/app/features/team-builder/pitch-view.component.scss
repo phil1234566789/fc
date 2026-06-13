@@ -1,0 +1,250 @@
+:host {
+  display: block;
+}
+
+.view {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 12px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+// ─── Team Stats Strips ───────────────────────────────────────────────────────
+
+.team-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  flex-wrap: wrap;
+
+  &--a {
+    background: rgba(201, 162, 39, 0.1);
+    border: 1px solid rgba(201, 162, 39, 0.3);
+  }
+
+  &--b {
+    background: rgba(180, 210, 255, 0.07);
+    border: 1px solid rgba(180, 210, 255, 0.2);
+  }
+}
+
+.team-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-right: 4px;
+
+  .team-stats--a & { color: var(--gold); }
+  .team-stats--b & { color: rgba(180, 210, 255, 0.9); }
+}
+
+.stat {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+
+  b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  & + .stat::before {
+    content: '·';
+    margin-right: 6px;
+    color: var(--text-muted);
+    opacity: 0.4;
+  }
+}
+
+// ─── Pitch ───────────────────────────────────────────────────────────────────
+
+.pitch {
+  background:
+    radial-gradient(ellipse 55% 35% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%),
+    linear-gradient(180deg,
+      #174d15 0%,
+      #1e6b1c 20%,
+      #226e20 40%,
+      #226e20 60%,
+      #1e6b1c 80%,
+      #174d15 100%
+    );
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+}
+
+.center-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.28);
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.center-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  position: absolute;
+}
+
+// ─── Player Token ─────────────────────────────────────────────────────────────
+
+.token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+
+  &--gk {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.token--a .avatar { border-color: var(--gold); }
+.token--b .avatar { border-color: rgba(180, 210, 255, 0.85); }
+
+.pname {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+  text-align: center;
+  max-width: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+
+  &--light {
+    text-shadow: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.78rem;
+  }
+}
+
+.gk-tag {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+// ─── Substitutes ─────────────────────────────────────────────────────────────
+
+.subs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.sub-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &--right {
+    flex-direction: row-reverse;
+  }
+}
+
+.sub-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.token--small .avatar {
+  width: 34px;
+  height: 34px;
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.reroll-btn {
+  flex: 1;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: var(--gold-faint);
+    border-color: var(--gold-muted);
+  }
+}
+
+.accept-btn {
+  flex: 2;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #0a0a14;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.15s;
+
+  &:hover { opacity: 0.88; }
+}

@@ -1,25 +1,33 @@
-<div class="team-builder">
-  <div class="header">
-    <h1 class="page-title">Select Participants</h1>
+@if (result()) {
+
+  <app-pitch-view [result]="result()!" (reroll)="generate()" (accept)="onAccept()" />
+
+} @else {
+
+  <div class="team-builder">
+    <div class="header">
+      <h1 class="page-title">Select Participants</h1>
+    </div>
+
+    <ul class="player-list">
+      @for (player of players(); track player.id) {
+        <li class="player-item"
+            [class.player-item--selected]="isSelected(player.id)"
+            (click)="toggle(player.id)">
+          <img class="avatar" [src]="player.image" [alt]="player.name" />
+          <span class="name">{{ player.name }}</span>
+          @if (isSelected(player.id)) {
+            <span class="check">✓</span>
+          }
+        </li>
+      }
+    </ul>
   </div>
 
-  <ul class="player-list">
-    @for (player of players(); track player.id) {
-      <li class="player-item"
-          [class.player-item--selected]="isSelected(player.id)"
-          (click)="toggle(player.id)">
-        <img class="avatar" [src]="player.image" [alt]="player.name" />
-        <span class="name">{{ player.name }}</span>
-        @if (isSelected(player.id)) {
-          <span class="check">✓</span>
-        }
-      </li>
-    }
-  </ul>
-</div>
+  <div class="footer">
+    <button class="generate-btn" [disabled]="!canGenerate()" (click)="generate()">
+      {{ canGenerate() ? 'Generate Teams' : selectedCount() + ' / ' + required + ' selected' }}
+    </button>
+  </div>
 
-<div class="footer">
-  <button class="generate-btn" [disabled]="!canGenerate()" (click)="generate()">
-    {{ canGenerate() ? 'Generate Teams' : selectedCount() + ' / ' + required + ' selected' }}
-  </button>
-</div>
+}
