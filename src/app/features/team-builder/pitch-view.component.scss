@@ -8,39 +8,32 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 55% 35% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%),
+    linear-gradient(180deg, #174d15 0%, #1e6b1c 20%, #226e20 40%, #226e20 60%, #1e6b1c 80%, #174d15 100%);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-.detail-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-.detail-title {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold);
-}
-
 .detail-close {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1rem;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 5px 9px;
+  border-radius: 5px;
   line-height: 1;
 
-  &:hover { color: var(--text); }
+  &:hover {
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+  }
 }
 
 .detail-body {
@@ -48,7 +41,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 12px 0;
 }
 
 .detail-team {
@@ -62,12 +55,12 @@
 }
 
 .detail-team-label {
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   flex-shrink: 0;
-  width: 20px;
+  white-space: nowrap;
 
   &--a { color: var(--gold); }
   &--b { color: rgba(180, 210, 255, 0.9); }
@@ -81,14 +74,27 @@
   padding-bottom: 6px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
-.detail-divider {
+.detail-center-line {
   height: 1px;
-  background: var(--border);
-  margin: 8px 14px;
+  background: rgba(255, 255, 255, 0.28);
+  margin: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   flex-shrink: 0;
+}
+
+.detail-center-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  position: absolute;
 }
 
 .view {

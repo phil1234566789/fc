@@ -2,15 +2,12 @@
 @if (cardMode() === 'detailed') {
   <div class="detail-overlay">
 
-    <div class="detail-header">
-      <span class="detail-title">Teams</span>
-      <button class="detail-close" (click)="toggleMode()">✕</button>
-    </div>
+    <button class="detail-close" (click)="toggleMode()">✕</button>
 
     <div class="detail-body">
 
       <div class="detail-team">
-        <span class="detail-team-label detail-team-label--a">TA</span>
+        <span class="detail-team-label detail-team-label--a">Team A</span>
         <div class="detail-row">
           @for (p of posA().backs; track p.id) {
             <app-pitch-player-card [player]="p" mode="detailed" team="a" />
@@ -24,10 +21,10 @@
         </div>
       </div>
 
-      <div class="detail-divider"></div>
+      <div class="detail-center-line"><div class="detail-center-dot"></div></div>
 
       <div class="detail-team">
-        <span class="detail-team-label detail-team-label--b">TB</span>
+        <span class="detail-team-label detail-team-label--b">Team B</span>
         <div class="detail-row">
           @for (p of posB().backs; track p.id) {
             <app-pitch-player-card [player]="p" mode="detailed" team="b" />
