@@ -1,0 +1,43 @@
+<div class="audit-log">
+  <h1 class="page-title">Audit Log</h1>
+
+  @if (entries().length === 0) {
+    <p class="empty">No changes recorded yet.</p>
+  }
+
+  <ul class="entries">
+    @for (entry of entries(); track entry.id) {
+      @let changes = getChanges(entry);
+      <li class="entry">
+        <div class="entry__header">
+          <span class="badge" [class.badge--delete]="entry.action === 'delete'">
+            {{ entry.action }}
+          </span>
+          <span class="entry__player">{{ entry.before.name }}</span>
+          <span class="entry__by">by {{ entry.editor_name }}</span>
+          <time class="entry__time">{{ entry.timestamp | date:'d MMM y, HH:mm' }}</time>
+        </div>
+
+        <p class="entry__reason">"{{ entry.reason }}"</p>
+
+        @if (changes.length > 0) {
+          <div class="changes">
+            @for (change of changes; track change.label) {
+              <div class="change">
+                <span class="change__label">{{ change.label }}</span>
+                <span class="change__before">{{ change.before }}</span>
+                <span class="change__arrow">→</span>
+                <span class="change__after" [ngClass]="deltaClass(change.delta)">{{ change.after }}</span>
+                @if (change.delta) {
+                  <span class="change__delta" [ngClass]="deltaClass(change.delta)">
+                    {{ formatDelta(change.delta) }}
+                  </span>
+                }
+              </div>
+            }
+          </div>
+        }
+      </li>
+    }
+  </ul>
+</div>

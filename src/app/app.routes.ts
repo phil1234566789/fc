@@ -16,4 +16,11 @@ export const routes: Routes = [
         (m) => m.RatingsComponent,
       ),
   },
+  {
+    path: 'audit-log',
+    loadComponent: () =>
+      import('./features/audit-log/audit-log.component').then(
+        (m) => m.AuditLogComponent,
+      ),
+  },
 ];
