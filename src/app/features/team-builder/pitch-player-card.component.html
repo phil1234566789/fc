@@ -1,35 +1,25 @@
 <div class="pcard" [class.pcard--a]="team() === 'a'" [class.pcard--b]="team() === 'b'">
 
-  <div class="pcard__top">
-    <div class="pcard__tot-wrap">
-      <span class="pcard__tot">{{ total() }}</span>
-      <span class="pcard__tot-label">TOT</span>
-    </div>
-    <span class="pcard__fit" [style.background]="fitnessColor()"></span>
-  </div>
-
   <img class="pcard__avatar" [src]="player().image" [alt]="player().name" />
 
-  <div class="pcard__name">{{ shortName() }}</div>
-
-  @if (mode() === 'compact') {
-    <div class="pcard__stats pcard__stats--2">
+  <div class="pcard__info">
+    <div class="pcard__top-row">
+      <span class="pcard__name">{{ shortName() }}</span>
+      <div class="pcard__tot-wrap">
+        <span class="pcard__tot">{{ total() }}</span>
+        <span class="pcard__tot-lbl">TOT</span>
+      </div>
+    </div>
+    <div class="pcard__stats">
       @for (s of top2(); track s.label) {
         <div class="pcard__stat">
-          <span class="pcard__stat-val">{{ s.value }}</span>
           <span class="pcard__stat-lbl">{{ s.label }}</span>
+          <span class="pcard__stat-val">{{ s.value }}</span>
         </div>
       }
     </div>
-  } @else {
-    <div class="pcard__stats pcard__stats--all">
-      @for (s of allStats(); track s.label) {
-        <div class="pcard__stat">
-          <span class="pcard__stat-val">{{ s.value }}</span>
-          <span class="pcard__stat-lbl">{{ s.label }}</span>
-        </div>
-      }
-    </div>
-  }
+  </div>
+
+  <span class="pcard__fit" [style.background]="fitnessColor()"></span>
 
 </div>

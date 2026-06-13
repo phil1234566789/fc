@@ -2,9 +2,6 @@
 
   <!-- Action header -->
   <div class="action-bar">
-    <button class="action-btn action-btn--toggle" (click)="toggleMode()">
-      {{ cardMode() === 'compact' ? '⊞ Details' : '⊟ Compact' }}
-    </button>
     <button class="action-btn action-btn--reroll" (click)="reroll.emit()">↺ Re-roll</button>
     <button class="action-btn action-btn--accept" (click)="accept.emit()">✓ Accept</button>
   </div>
